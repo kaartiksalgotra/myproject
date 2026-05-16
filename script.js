@@ -1,57 +1,44 @@
-// script.js
-
-// A simple script to handle navigation highlighting, mobile menu, and simple interactions
-// Written in a clean, human-like way, perfect for a first-year student.
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu Toggle
-    const menuToggle = document.getElementById('mobile-menu');
-    const navMenu = document.querySelector('nav ul');
+    const menuBtn = document.getElementById('mobile-menu'); // button to open menu on mobile
+    const menuList = document.querySelector('nav ul');
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
+    if (menuBtn && menuList) {
+        menuBtn.addEventListener('click', () => {
+            menuList.classList.toggle('show'); // show or hide the menu list
         });
     }
 
-    // 2. Dynamic Active Class on Navigation Links
-    // This highlights the current page in the navigation bar
-    const currentPath = window.location.pathname.split('/').pop();
-    const navLinks = document.querySelectorAll('nav ul li a');
+    const thisPage = window.location.pathname.split('/').pop(); // highlight current page in menu
+    const allLinks = document.querySelectorAll('nav ul li a');
 
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        if (linkPath === currentPath || (currentPath === '' && linkPath === 'index.html')) {
+    allLinks.forEach(link => {
+        const linkName = link.getAttribute('href');
+        if (linkName === thisPage || (thisPage === '' && linkName === 'index.html')) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
         }
     });
 
-    // 3. Simple Filtering Logic (For places.html)
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.filter-item');
+    const allBtns = document.querySelectorAll('.filter-btn'); // filter cards on places page
+    const items = document.querySelectorAll('.filter-item');
 
-    if (filterButtons.length > 0 && cards.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
+    if (allBtns.length > 0 && items.length > 0) {
+        allBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                allBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-                // Get the category to filter
-                const filterValue = button.getAttribute('data-filter');
+                const category = btn.getAttribute('data-filter');
 
-                // Loop through all cards and show/hide based on category
-                cards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'block';
+                items.forEach(item => {
+                    if (category === 'all') {
+                        item.style.display = 'block';
                     } else {
-                        if (card.classList.contains(filterValue)) {
-                            card.style.display = 'block';
+                        if (item.classList.contains(category)) {
+                            item.style.display = 'block';
                         } else {
-                            card.style.display = 'none';
+                            item.style.display = 'none';
                         }
                     }
                 });
@@ -59,38 +46,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Simple Form Validation (For about.html)
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent page reload
+    const myForm = document.getElementById('contactForm'); // question form check
+    if (myForm) {
+        myForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
 
             if (name.trim() === '' || email.trim() === '') {
-                alert('Please fill in all required fields!');
+                let errorBox = document.createElement('div');
+                errorBox.className = 'success-message';
+                errorBox.style.borderLeftColor = '#e74c3c';
+                errorBox.innerHTML = `<strong>Oops!</strong><br>Please fill in everything.`;
+                myForm.appendChild(errorBox);
+                setTimeout(() => errorBox.remove(), 4000);
             } else {
-                alert(`Thank you, ${name}! Your message has been sent. We'll reply soon.`);
-                contactForm.reset();
+                let doneMsg = document.createElement('div');
+                doneMsg.className = 'success-message';
+                doneMsg.innerHTML = `<strong>Thank You, ${name}!</strong><br>We got your message.`;
+                
+                const oldMsg = myForm.querySelector('.success-message');
+                if(oldMsg) oldMsg.remove();
+                
+                myForm.appendChild(doneMsg);
+                myForm.reset();
+                
+                setTimeout(() => doneMsg.remove(), 6000);
             }
         });
     }
 
-    // 5. Greeting based on time of day (just a fun little extra!)
-    const greetingElement = document.getElementById('greeting');
-    if (greetingElement) {
+    const welcomeText = document.getElementById('greeting'); // greeting based on time
+    if (welcomeText) {
         const hour = new Date().getHours();
-        let greeting = 'WELCOME';
+        let msg = 'WELCOME';
 
         if (hour < 12) {
-            greeting = 'GOOD MORNING';
+            msg = 'GOOD MORNING';
         } else if (hour < 18) {
-            greeting = 'GOOD AFTERNOON';
+            msg = 'GOOD AFTERNOON';
         } else {
-            greeting = 'GOOD EVENING';
+            msg = 'GOOD EVENING';
         }
 
-        greetingElement.innerText = `${greeting} EXPLORER!`;
+        welcomeText.innerText = `${msg} EXPLORER!`;
     }
+
+    let boxes = document.querySelectorAll('.card'); // boxes fade in on scroll
+
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].classList.add('hidden-card');
+    }
+
+    function showBoxes() {
+        for (let i = 0; i < boxes.length; i++) {
+            let boxTop = boxes[i].getBoundingClientRect().top;
+            if (boxTop < 600) {
+                boxes[i].classList.add('show-card');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', showBoxes);
+    showBoxes();
 });
+
+

@@ -1,48 +1,41 @@
-/* Main Stylesheet for Jammu Travel Project */
-/* Made by a dedicated first-year student */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-/* 🟢 USED IN INDEX.HTML */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f7f9fc; /* Soft gray-blue */
+body { /* base settings for the whole page */
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
     color: #333333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
-/* Top Navigation Bar 🟢 USED IN INDEX.HTML */
-header {
-    background-color: #1e3c72; /* Nice deep blue */
-    color: white;
-    padding: 15px 30px;
-    border-bottom: 4px solid #ff7e5f; /* Coral accent */
+header { /* top bar with logo and menu */
+    background-color: #F7F5F0;
+    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
+    color: #111111;
+    font-size: 26px;
+    font-family: 'Lora', serif;
+    font-weight: 400;
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
-.logo span {
-    color: #ff7e5f;
-}
-
-nav ul {
+nav ul { /* the navigation menu list */
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
+    gap: 35px;
 }
 
 nav ul li {
@@ -50,149 +43,175 @@ nav ul li {
 }
 
 nav a {
-    color: #e0e0e0;
+    color: #444444; 
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
 }
 
 nav a:hover, nav a.active {
-    color: #ff7e5f;
+    color: #000000;
 }
 
 .menu-toggle {
-    display: none; /* Only for mobile */
+    display: none;
 }
 
-/* Main Container to keep content centered 🟢 USED IN INDEX.HTML */
-main {
+main { /* main content container */
     max-width: 1000px;
     margin: 40px auto;
     background-color: #ffffff;
     padding: 40px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Softer shadow */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Headings 🟢 USED IN INDEX.HTML */
 h1, h2, h3 {
-    color: #1e3c72;
+    color: #3E2723;
+    font-family: 'Lora', serif;
 }
 
-.section-title, .title {
+.section-title { /* big titles for page sections */
     text-align: center;
-    border-bottom: 2px solid #1e3c72;
+    border-bottom: 2px solid #C4A484;
     padding-bottom: 10px;
     display: inline-block;
     margin: 0 auto 10px auto;
 }
 
-/* Center the container for the inline-block title */
 .title-container {
     text-align: center;
 }
 
-h1.section-title, h1.title {
+h1.section-title {
     display: block;
     border: none;
-    border-bottom: 2px solid #1e3c72;
+    border-bottom: 2px solid #C4A484;
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
 }
 
-.section-subtitle, .subtitle {
+.section-subtitle {
     text-align: center;
     color: #666666;
     margin-bottom: 30px;
 }
 
-/* Hero Section 🟢 USED IN INDEX.HTML */
-.hero {
+.hero { /* large intro section with background */
     text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-height: 85vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1596706059288-41f2371b2e21?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
 }
 
 .hero h1 {
-    color: white;
-    font-size: 36px;
-    margin-top: 0;
+    font-family: 'Lora', serif;
+    font-size: 58px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: #ffffff;
 }
 
 .hero p {
-    font-size: 18px;
-    opacity: 0.9;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.95;
+    margin-bottom: 40px;
 }
 
-.btn {
-    background-color: #ff7e5f;
-    color: white;
-    padding: 12px 24px;
+.btn { /* common button styling */
+    background-color: #3E2723;
+    color: #FFFFFF;
+    padding: 14px 30px;
     text-decoration: none;
-    border-radius: 25px; /* Pill-shaped button */
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     cursor: pointer;
     display: inline-block;
-    margin-top: 20px;
+    border-radius: 4px;
     border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn:hover {
-    background-color: #e06c50;
+    background-color: #5C4033;
     transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Layout for items 🟢 USED IN INDEX.HTML */
-.grid {
+.contact-form .btn {
+    background-color: #A67B5B;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.contact-form .btn:hover {
+    background-color: #8C6244;
+}
+
+.grid { /* grid layout for content cards */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
-.card {
+.card { /* single display card */
     width: 30%;
-    min-width: 260px;
-    border: 1px solid #eeeeee;
+    min-width: 280px;
+    border: 1px solid #EAE0D5;
     border-radius: 8px;
     background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden; /* Keeps image inside border-radius */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; 
     display: flex;
     flex-direction: column;
 }
 
 .card:hover {
+    box-shadow: 0 8px 20px rgba(92, 64, 51, 0.08);
+    border-color: #C4A484;
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .card img {
     width: 100%;
-    height: 180px;
-    object-fit: cover; /* Looks much nicer */
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
-.card-content, .content {
+.card:hover img {
+    transform: scale(1.03);
+}
+
+.card-content {
     padding: 15px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* 🔴 NOT USED IN INDEX.HTML */
 .card-category {
     font-weight: 700;
-    color: #ff7e5f;
+    color: #A67B5B;
     font-size: 12px;
     text-transform: uppercase;
     margin-bottom: 5px;
@@ -205,34 +224,31 @@ h1.section-title, h1.title {
 
 .card p {
     font-size: 14px;
-    color: #555555;
-    flex-grow: 1; /* Pushes card-actions to bottom */
+    color: #6D5C53;
+    flex-grow: 1;
 }
 
-/* 🔴 NOT USED IN INDEX.HTML */
 .card-actions {
     margin-top: 15px;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #EAE0D5;
     padding-top: 15px;
     text-align: right;
 }
 
-/* 🔴 NOT USED IN INDEX.HTML */
 .card-link {
-    color: #2a5298; 
+    color: #5C4033;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 }
 
 .card-link:hover {
-    color: #ff7e5f;
+    color: #A67B5B;
     text-decoration: underline;
 }
 
-/* Forms 🔴 NOT USED IN INDEX.HTML */
-.contact-form {
+.contact-form { /* the layout for input forms */
     max-width: 600px;
     margin: 0 auto;
     border: 1px solid #e0e0e0;
@@ -249,7 +265,7 @@ h1.section-title, h1.title {
     font-weight: 700;
     display: block;
     margin-bottom: 8px;
-    color: #1e3c72;
+    color: #3E2723;
 }
 
 .form-group input, .form-group textarea {
@@ -258,52 +274,50 @@ h1.section-title, h1.title {
     border: 1px solid #cccccc;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
-    box-sizing: border-box; /* Fixes width issue */
+    box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
 
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
-    border-color: #2a5298;
+    border-color: #A67B5B;
 }
 
-/* Filters 🔴 NOT USED IN INDEX.HTML */
-.filter-container {
+.filter-container { /* container for category filter buttons */
     text-align: center;
     margin-bottom: 30px;
 }
 
 .filter-btn {
     background-color: #ffffff;
-    color: #1e3c72;
-    border: 2px solid #1e3c72;
+    color: #5C4033;
+    border: 2px solid #5C4033;
     padding: 8px 20px;
     margin: 5px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .filter-btn:hover, .filter-btn.active {
-    background-color: #1e3c72;
+    background-color: #A67B5B;
+    border-color: #A67B5B;
     color: white;
 }
 
-/* Map info box 🔴 NOT USED IN INDEX.HTML */
 .map-info {
     text-align: center;
     border-radius: 8px;
     padding: 30px;
     margin-top: 40px;
-    background-color: #f0f4f8;
+    background-color: #EAE0D5;
 }
 
-/* Footer 🟢 USED IN INDEX.HTML */
-footer {
-    background-color: #1e3c72;
-    color: #eeeeee;
+footer { /* bottom bar of the website */
+    background-color: #EAE0D5;
+    color: #3E2723;
     text-align: center;
     padding: 30px 20px;
     margin-top: auto;
@@ -317,7 +331,7 @@ footer {
 }
 
 .footer-links a {
-    color: #ff7e5f;
+    color: #A67B5B;
     text-decoration: none;
     font-weight: 700;
 }
@@ -326,8 +340,7 @@ footer {
     text-decoration: underline;
 }
 
-/* Basic mobile responsive 🟢 USED IN INDEX.HTML */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) { /* settings for smaller screens */
     .card {
         width: 45%;
     }
@@ -341,7 +354,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) { /* settings for mobile screens */
     .card {
         width: 100%;
     }
@@ -354,3 +367,34 @@ footer {
         font-size: 28px;
     }
 }
+
+.hidden-card { /* settings for hiding cards */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-message { /* styling for popup messages */
+    background-color: #EAE0D5;
+    color: #3E2723;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 4px solid #A67B5B;
+    border-radius: 4px;
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn { /* simple fade in animation */
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
