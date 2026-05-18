@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    // FEATURE 1 ─ PHONE MENU TOGGLE 
+    // feature 1 ─ for small screens
 
     var phoneMenuBtn = document.getElementById('mobile-menu');
     var navMenuList = document.querySelector('nav ul');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // FEATURE 2 ─ MARK ACTIVE PAGE IN NAV 
+    // feature 2
     // To make the current page link highlighted in navbar
 
     var currentPage = window.location.pathname.split('/').pop();
@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // FEATURE 3 ─ REDIRECT TO LOGIN IF NOT LOGGED IN
+    // feature 3 ─ redirect to the login page if the user hasnt login
 
-    var loginStatus = localStorage.getItem('userLoggedIn'); // 'yes' or null
+    var loginStatus = localStorage.getItem('userLoggedIn'); 
 
     var protectedPages = ['places.html', 'food.html', 'culture.html', 'query.html'];
 
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // FEATURE 4 ─ DARK MODE TOGGLE
-    // A button is added to the header by JS.Clicking it switches between light and dark mode.
+    // feature 4─ 
+
 
     var siteHeader = document.querySelector('header');
     var themeBtn = document.createElement('button');
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // FEATURE 5 ─ LOGIN / LOGOUT CHECK
-    // If user is logged in,show Explore Now and Logout button. else it will show only log in button
+    // feature 5─ 
+    
 
 
     var heroActionArea = document.getElementById('hero-action');
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // FEATURE 6 ─ LOGIN FORM
+    // feautre 6 ─ login form
     // for checking the form validation and setting the local storage
 
     var loginForm = document.getElementById('loginForm');
@@ -131,12 +131,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // FEATURE 7 ─ TIME-BASED GREETING
+    // feature 7
 
     var greetingText = document.getElementById('greeting');
 
     if (greetingText) {
         var currentHour = new Date().getHours();
+        console.log(currentHour);
         var greeting = 'WELCOME';
 
         if (currentHour < 12) {
@@ -153,30 +154,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    //  FEATURE 8 ─ FILTER BUTTONS
+    //  Feature 8 ─ filter buttons
     // When you click "Temple", "Nature", or "Heritage" button,only cards of that type are shown. "All" shows everything.
 
-    var filterBtns = document.querySelectorAll('.filter-btn');   // all 4 filter buttons
-    var filterCards = document.querySelectorAll('.filter-item');  // all the cards on the page
+    var filterBtns = document.querySelectorAll('.filter-btn');   
+    var filterCards = document.querySelectorAll('.filter-item');  
 
     filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
 
-            // remove the highlight from every button first
+           
             filterBtns.forEach(function (b) { b.classList.remove('active'); });
 
-            // now highlight only the button that was clicked
+            
             btn.classList.add('active');
 
             // read which category this button belongs to:
             var chosen = btn.getAttribute('data-filter');
 
-            // go through every card and decide: show it or hide it
+            
             filterCards.forEach(function (card) {
                 if (chosen === 'all' || card.classList.contains(chosen)) {
-                    card.style.display = 'block'; // show this card
+                 card.style.display = 'block'; 
                 } else {
-                    card.style.display = 'none';  // hide this card
+                    card.style.display = 'none'; 
                 }
             });
 
@@ -184,8 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // FEATURE 9 ─ CONTACT FORM (Query page)
-    // On submit, show a thank-you message with the user's name
+    // feature 9 ─ contact form (Query page)
 
     var queryForm = document.getElementById('contactForm');
 
@@ -209,15 +209,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // FEATURE 10 ─ LIVE WEATHER OF JAMMU
+    // feature 10 ─ live weather of jammu
     // using a free weather API called Open-Meteo.
 
     var weatherBox = document.getElementById('weather-box');
     var weatherURL = 'https://api.open-meteo.com/v1/forecast?latitude=32.73&longitude=74.86&current_weather=true';//the link that gives us Jammu's weather data
-
+                      
     if (weatherBox) {
 
-        // fetch() sends a request to the weather website
+       
         fetch(weatherURL)
             .then(function (reply) {
                 return reply.json();
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     travelTip = 'It is warm in Jammu, carry water! ☀️';
                 }
 
-                // display weather in weather box
+
                 weatherBox.textContent = '🌡️ Jammu Right Now: ' + currentTemp + '°C  —  ' + travelTip;
             });
 
