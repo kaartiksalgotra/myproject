@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jammu Journeys | Query</title>
+    <title>Jammu Journeys | Login</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Send a query or contact us for more information about your Jammu trip.">
+    <meta name="description" content="Login to Jammu Journeys to start exploring.">
 </head>
-
 <body>
 
     <header>
@@ -27,28 +25,27 @@
     </header>
 
     <main>
-        <h1 class="section-title">Send a Query</h1>
-        <p class="section-subtitle">Have questions about your trip? We are here to help.</p>
+        <h1 class="section-title">Welcome Back</h1>
+        <p class="section-subtitle">Login to start exploring the best of Jammu.</p>
 
-        <!-- question form section -->
-        <form id="contactForm" class="contact-form">
+        <!-- Login form — JS handles the submit event -->
+        <form id="loginForm" class="contact-form">
+
             <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <label for="loginName">Your Name</label>
+                <input type="text" id="loginName" placeholder="Enter Your name">
             </div>
 
             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="abc@example.com" required>
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password">
             </div>
 
-            <div class="form-group">
-                <label for="message">Your Message or Inquiry</label>
-                <textarea id="message" name="message" rows="5" placeholder="How can we help you plan your visit?"
-                    required></textarea>
-            </div>
+            <!-- error message shown by JS if fields are empty -->
+            <p id="loginError" style="color: #e74c3c; font-size: 14px; margin-bottom: 10px;"></p>
 
-            <button type="submit" class="btn">Send Message</button>
+            <button type="submit" class="btn">Login</button>
+
         </form>
     </main>
 
@@ -66,5 +63,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
